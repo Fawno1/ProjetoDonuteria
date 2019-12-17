@@ -1,11 +1,9 @@
 package br.com.fundatec.Donuteria.api;
 
-import br.com.fundatec.Donuteria.model.Donuteria;
 import br.com.fundatec.Donuteria.service.DonuteriaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -19,6 +17,6 @@ public class DonuteriaApi {
 
     @GetMapping("donuteria")
     public List<String> getDonuteria() {
-        return DonuteriaService.listarDonuteria();
+        return donuteriaService.listarDonuteria();
     }
 }

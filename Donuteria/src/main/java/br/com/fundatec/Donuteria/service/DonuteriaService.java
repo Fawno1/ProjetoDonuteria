@@ -1,15 +1,21 @@
 package br.com.fundatec.Donuteria.service;
 
-import java.util.Arrays;
+import br.com.fundatec.Donuteria.repository.DonuteriaRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public class DonuteriaService {
-    public static List<String> listarDonuteria() {
-        List<String> donuteria = Arrays.asList("Café com leite e donut de chocolate",
-                "Coca-cola e 2 donuts de morango",
-                "4 donuts com cobertura de Nutella");
 
-        return donuteria;
+    private final DonuteriaRepository donuteriaRepository;
+
+    public DonuteriaService(DonuteriaRepository donuteriaRepository) {
+        this.donuteriaRepository = donuteriaRepository;
+    }
+
+    public List<String> listarDonuteria() {
+        return donuteriaRepository.listarDonuteria();
 
     }
 }
