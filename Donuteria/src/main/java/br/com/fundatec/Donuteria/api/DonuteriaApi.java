@@ -1,5 +1,7 @@
 package br.com.fundatec.Donuteria.api;
 
+import br.com.fundatec.Donuteria.model.Donuteria;
+import br.com.fundatec.Donuteria.service.DonuteriaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,12 +11,14 @@ import java.util.List;
 @RestController
 public class DonuteriaApi {
 
+    private final DonuteriaService donuteriaService;
+
+    public DonuteriaApi(DonuteriaService donuteriaService) {
+        this.donuteriaService = donuteriaService;
+    }
+
     @GetMapping("donuteria")
     public List<String> getDonuteria() {
-        List donuteria = Arrays.asList("Café com leite e donut de chocolate",
-                        "Coca-cola e 2 donuts de morango",
-                                "4 donuts com cobertura de Nutella");
-
-                return donuteria;
+        return DonuteriaService.listarDonuteria();
     }
 }
