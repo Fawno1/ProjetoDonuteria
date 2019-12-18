@@ -1,5 +1,6 @@
 package br.com.fundatec.Pedido.service;
 
+import br.com.fundatec.Pedido.model.Pedido;
 import br.com.fundatec.Pedido.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,11 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public List<String> listarPedidos() {
-        return pedidoRepository.listarPedido();
+    public List<Pedido> listarPedidos(String descricao){
+            return pedidoRepository.listarPedidos(descricao);
+    }
 
+    public Pedido consultar(Long id) {
+        return pedidoRepository.consultar(id);
     }
 }

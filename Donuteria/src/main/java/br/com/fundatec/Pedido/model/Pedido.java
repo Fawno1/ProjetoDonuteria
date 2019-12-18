@@ -22,6 +22,13 @@ public class Pedido {
     @JoinColumn
     private Entrega entrega;
 
+
+    public Pedido(Long id, String descricao, String endereco) {
+        this.id = id;
+        this.descricao = descricao;
+        this.endereco = endereco;
+    }
+
     public Long getId() {
         return id;
     }
