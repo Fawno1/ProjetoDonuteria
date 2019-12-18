@@ -1,5 +1,7 @@
 package br.com.fundatec.Pedido.api;
 
+import br.com.fundatec.Pedido.api.dto.PedidoOutputDto;
+import br.com.fundatec.Pedido.mapper.PedidoMapper;
 import br.com.fundatec.Pedido.model.Pedido;
 import br.com.fundatec.Pedido.service.PedidoService;
 import org.springframework.http.HttpStatus;
@@ -13,25 +15,31 @@ import java.util.List;
 
 @RestController
 public class PedidoApi{
+
     private final PedidoService pedidoService;
-    public PedidoApi(PedidoService pedidoService) {
+    private final PedidoMapper pedidoMapper;
+
+    public PedidoApi(PedidoService pedidoService, PedidoMapper pedidoMapper) {
         this.pedidoService = pedidoService;
+        this.pedidoMapper = pedidoMapper;
     }
     @GetMapping("/pedidos")
-    public ResponseEntity<List<Pedido>> getPedidos(@RequestParam(required = false, defaultValue = "") String descricao) {
+    public ResponseEntity<List<PedidoOutputDto>> getPedidos(@RequestParam(required = false, defaultValue = "") String descricao) {
         List<Pedido> pedidos = pedidoService.listarPedidos(descricao);
         if (pedidos.size() == 0) {
-            return ResponseEntity.status((HttpStatus.NO_CONTENT))
-                    .body(pedidos);
+            return ResponseEntity.noContent()
+                    .build();
         }
-        return ResponseEntity.ok(pedidos);
+        List<PedidoOutputDto> pedidosOutputDto = pedidoMapper.mapear(pedidos);
+        return ResponseEntity.ok(pedidosOutputDto);
     }
 
     @GetMapping("/pedidos/{id}")
-    public ResponseEntity<Pedido> getPedido(@PathVariable Long id) {
+    public ResponseEntity<PedidoOutputDto> getPedido(@PathVariable Long id) {
         Pedido pedido = pedidoService.consultar(id);
         if(pedido != null) {
-            return ResponseEntity.ok(pedido);
+           PedidoOutputDto pedidoOutputDto = pedidoMapper.mapear(pedido);
+           return ResponseEntity.ok(pedidoOutputDto);
         }
         return ResponseEntity.noContent().build();
     }
