@@ -22,16 +22,13 @@ public class PedidoApi{
         this.pedidoMapper = pedidoMapper;
     }
     @GetMapping("/pedidos")
-    public ResponseEntity<List<PedidoOutputDto>> getPedidos(@RequestParam(required = false, defaultValue = "") String descricao) {
-        List<Pedido> pedidos = pedidoService.listarPedidos(descricao);
+    public ResponseEntity<?> getPedidos() {
+        List<Pedido> pedidos = pedidoService.listarPedidos();
         if (pedidos.size() == 0) {
-            return ResponseEntity.noContent()
-                    .build();
+            return ResponseEntity.noContent().build();
         }
-        List<PedidoOutputDto> pedidosOutputDto = pedidoMapper.mapear(pedidos);
-        return ResponseEntity.ok(pedidosOutputDto);
+        return ResponseEntity.ok(pedidos);
     }
-
     @GetMapping("/pedidos/{id}")
     public ResponseEntity<PedidoOutputDto> getPedido(@PathVariable Long id) {
         Pedido pedido = pedidoService.consultar(id);
@@ -48,6 +45,13 @@ public class PedidoApi{
         pedido = pedidoService.incluir(pedido);
         PedidoOutputDto pedidoOutputDto = pedidoMapper.mapear(pedido);
         return ResponseEntity.status(HttpStatus.CREATED).body(pedidoOutputDto);
+    }
+
+    @DeleteMapping("/pedidos/{id}")
+
+            public ResponseEntity<?> excluirPedido(@PathVariable Long id) {
+           pedidoService.excluir(id);
+           return ResponseEntity.ok().build();
     }
 
 }

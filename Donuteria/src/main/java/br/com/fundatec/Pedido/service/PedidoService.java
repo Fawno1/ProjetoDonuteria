@@ -16,8 +16,8 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public List<Pedido> listarPedidos(String descricao){
-        return null;
+    public List<Pedido> listarPedidos() {
+        return (List<Pedido>) pedidoRepository.findAll();
     }
 
     public Pedido consultar(Long id) {
@@ -27,6 +27,10 @@ public class PedidoService {
     public Pedido incluir(Pedido pedido) {
         pedido.setSituacao(SituacaoPedidoEnum.PENDENTE);
         return pedidoRepository.save(pedido);
+    }
+
+    public void excluir(Long id) {
+        pedidoRepository.deleteById(id);
     }
 
 }

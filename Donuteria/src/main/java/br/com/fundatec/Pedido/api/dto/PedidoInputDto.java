@@ -1,6 +1,7 @@
 package br.com.fundatec.Pedido.api.dto;
 
 import br.com.fundatec.Pedido.enums.SituacaoPedidoEnum;
+import br.com.fundatec.Pedido.model.Entrega;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;

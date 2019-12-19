@@ -10,8 +10,9 @@ public class Entrega {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String entregador;
-    @OneToMany(mappedBy = "entrega")
-    private Set<Pedido> pedidos;
+
+    @OneToOne(mappedBy = "entrega")
+    private Pedido pedido;
 
     public Long getId() {
         return id;
@@ -29,11 +30,11 @@ public class Entrega {
         this.entregador = entregador;
     }
 
-    public Set<Pedido> getPedidos() {
-        return pedidos;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setPedidos(Set<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }

@@ -1,6 +1,7 @@
 package br.com.fundatec.Pedido.api.dto;
 
 import br.com.fundatec.Pedido.enums.SituacaoPedidoEnum;
+import br.com.fundatec.Pedido.model.Entrega;
 
 import java.time.LocalDate;
 
@@ -11,7 +12,6 @@ public class PedidoOutputDto {
     private String endereco;
     private LocalDate data;
     private SituacaoPedidoEnum situacao;
-
 
     public LocalDate getData() {
         return data;

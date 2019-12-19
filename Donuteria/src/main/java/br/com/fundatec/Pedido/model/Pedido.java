@@ -17,7 +17,7 @@ public class Pedido {
     @Enumerated(EnumType.STRING) //proprio valor do enum
     private SituacaoPedidoEnum situacao;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn
     private Entrega entrega;
 
