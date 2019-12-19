@@ -15,11 +15,17 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public List<Pedido> listarPedidos(String descricao){
-            return pedidoRepository.listarPedidos(descricao);
+    public List<Pedido> listarPedidos(String descricao){ //
+//            return pedidoRepository3.listarPedidos(descricao);
+        return null;
     }
 
     public Pedido consultar(Long id) {
-        return pedidoRepository.consultar(id);
+        return pedidoRepository.findById(id).orElse(null);
     }
+
+    public Pedido incluir(Pedido pedido) {
+        return pedidoRepository.save(pedido);
+    }
+
 }

@@ -1,5 +1,6 @@
 package br.com.fundatec.Pedido.mapper;
 
+import br.com.fundatec.Pedido.api.dto.PedidoInputDto;
 import br.com.fundatec.Pedido.api.dto.PedidoOutputDto;
 import br.com.fundatec.Pedido.model.Pedido;
 import org.springframework.stereotype.Component;
@@ -23,5 +24,12 @@ public class PedidoMapper {
             pedidoOutputDtos.add(mapear(pedido));
         }
         return pedidoOutputDtos;
+    }
+
+    public Pedido mapear(PedidoInputDto pedidoInputDto) {
+        Pedido pedido = new Pedido();
+        pedido.setDescricao(pedidoInputDto.getDescricao());
+        pedido.setEndereco(pedidoInputDto.getEndereco());
+        return pedido;
     }
 }

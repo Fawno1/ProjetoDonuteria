@@ -1,7 +1,6 @@
 package br.com.fundatec.Pedido.model;
 
 import br.com.fundatec.Pedido.enums.SituacaoPedidoEnum;
-import sun.util.resources.LocaleData;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,6 +21,8 @@ public class Pedido {
     @JoinColumn
     private Entrega entrega;
 
+    public Pedido() {
+    }
 
     public Pedido(Long id, String descricao, String endereco) {
         this.id = id;
