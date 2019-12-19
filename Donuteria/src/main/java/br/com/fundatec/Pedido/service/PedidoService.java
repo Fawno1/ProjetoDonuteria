@@ -17,8 +17,6 @@ public class PedidoService {
     }
 
     public List<Pedido> listarPedidos(String descricao){
-            return pedidoRepository.find(descricao);
-            return pedidoRepository.findByNome
         return null;
     }
 

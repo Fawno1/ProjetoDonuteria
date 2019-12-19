@@ -1,10 +1,33 @@
 package br.com.fundatec.Pedido.api.dto;
 
+import br.com.fundatec.Pedido.enums.SituacaoPedidoEnum;
+
+import java.time.LocalDate;
+
 public class PedidoOutputDto {
 
     private Long id;
     private String descricao;
     private String endereco;
+    private LocalDate data;
+    private SituacaoPedidoEnum situacao;
+
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public SituacaoPedidoEnum getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoPedidoEnum situacao) {
+        this.situacao = situacao;
+    }
 
     public Long getId() {
         return id;
