@@ -1,5 +1,6 @@
 package br.com.fundatec.Pedido.service;
 
+import br.com.fundatec.Pedido.enums.SituacaoPedidoEnum;
 import br.com.fundatec.Pedido.model.Pedido;
 import br.com.fundatec.Pedido.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,9 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public List<Pedido> listarPedidos(String descricao){ //
-//            return pedidoRepository3.listarPedidos(descricao);
+    public List<Pedido> listarPedidos(String descricao){
+            return pedidoRepository.find(descricao);
+            return pedidoRepository.findByNome
         return null;
     }
 
@@ -25,6 +27,7 @@ public class PedidoService {
     }
 
     public Pedido incluir(Pedido pedido) {
+        pedido.setSituacao(SituacaoPedidoEnum.PENDENTE);
         return pedidoRepository.save(pedido);
     }
 
