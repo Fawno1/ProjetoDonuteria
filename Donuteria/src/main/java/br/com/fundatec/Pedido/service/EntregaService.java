@@ -8,18 +8,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class EntregaService {
 
-    private final PedidoService pedidoService;
-    private final EntregaRepository entregaRepository;
+        private final PedidoService pedidoService;
+        private final EntregaRepository entregaRepository;
 
     public EntregaService(PedidoService pedidoService, EntregaRepository entregaRepository) {
         this.pedidoService = pedidoService;
         this.entregaRepository = entregaRepository;
-
     }
 
-//    public Entrega incluir(Entrega entrega, Long idPedido) {
-//        Pedido pedido = pedidoService.consultar(idPedido);
-//        entrega.setPedidos(pedido);
-//        return entregaRepository.save(entrega);
-
+    public Entrega incluir(Entrega entrega, Long idPedido) {
+        Pedido pedido = pedidoService.consultar(idPedido);
+        entrega.setPedido(pedido);
+        return entregaRepository.save(entrega);
+    }
 }

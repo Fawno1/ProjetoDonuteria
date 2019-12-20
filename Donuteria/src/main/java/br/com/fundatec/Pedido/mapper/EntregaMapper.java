@@ -26,7 +26,7 @@ public class EntregaMapper {
         EntregaOutputDto entregaOutputDto = new EntregaOutputDto();
         entregaOutputDto.setId(entrega.getId());
         entregaOutputDto.setEntregador(entrega.getEntregador());
-       // entregaOutputDto.setPedidoOutputDto(pedidoMapper.mapear((Pedido) entrega.getPedidos()));
+        entregaOutputDto.setPedidoOutputDto(pedidoMapper.mapear(entrega.getPedido()));
         return entregaOutputDto;
     }
 }
