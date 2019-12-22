@@ -33,7 +33,6 @@ public class PedidoMapper {
         pedido.setDescricao(pedidoInputDto.getDescricao());
         pedido.setEndereco(pedidoInputDto.getEndereco());
         pedido.setData(pedidoInputDto.getData());
-        pedido.setSituacao(pedidoInputDto.getSituacao());
         return pedido;
     }
 }

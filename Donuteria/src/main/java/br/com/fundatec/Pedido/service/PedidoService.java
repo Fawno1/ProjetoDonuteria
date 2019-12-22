@@ -29,6 +29,18 @@ public class PedidoService {
         return pedidoRepository.save(pedido);
     }
 
+    public Pedido atualizar(Long idPedido, Pedido pedidoParaAtualizacao) {
+        Pedido pedido = consultar(idPedido);
+        if(pedido != null) {
+            pedido.setDescricao(pedidoParaAtualizacao.getDescricao());
+            pedido.setEndereco(pedidoParaAtualizacao.getEndereco());
+            pedido.setData(pedidoParaAtualizacao.getData());
+            pedido.setSituacao(pedidoParaAtualizacao.getSituacao());
+            pedido = pedidoRepository.save(pedido);
+        }
+        return pedido;
+    }
+
     public void excluir(Long id) {
         pedidoRepository.deleteById(id);
     }
